@@ -577,34 +577,14 @@ parent:
 <p>Each component in a single devfile must have a unique name.</p>
 </div>
 <div class="sect3">
-<h4 id="_component_type_cheeditor"><a class="anchor" href="#_component_type_cheeditor"></a>Component type: cheEditor</h4>
+<h4 id="_component_type_plugin"><a class="anchor" href="#_component_type_plugin"></a>Component type: plugin</h4>
 <div class="paragraph">
-<p>Describes the editor used in the workspace by defining its <code>id</code>. A devfile can only contain one component of the <code>cheEditor</code> type.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">components:
-  - cheEditor:
-      id: eclipse/che-theia/next
-      alias: theia-editor</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When <code>cheEditor</code> is missing, a default editor is provided along with its default plug-ins. The default plug-ins are also provided for an explicitly defined editor with the same <code>id</code> as the default one (even if it is a different version). Che-Theia is configured as default editor along with the <strong>Che Machine Exec</strong> plug-in.</p>
-</div>
-<div class="paragraph">
-<p>To specify that a workspace requires no editor, use the <a href="#attribute-editorfree_making-a-workspace-portable-using-a-devfile"><code>editorFree:true</code> attribute</a> in the devfile attributes.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_component_type_cheplugin"><a class="anchor" href="#_component_type_cheplugin"></a>Component type: chePlugin</h4>
-<div class="paragraph">
-<p>Describes plug-ins in a workspace by defining their <code>id</code>. It is allowed to have several <code>chePlugin</code> components.</p>
+<p>Describes plug-ins in a workspace by defining their <code>id</code>. It is allowed to have several <code>plugin</code> components.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - chePlugin:
+   - plugin:
       id: eclipse/che-machine-exec-plugin/0.0.1
       name: exec-plugin</code></pre>
 </div>
@@ -619,12 +599,12 @@ parent:
 <div class="sect3">
 <h4 id="_specifying_an_alternative_component_registry"><a class="anchor" href="#_specifying_an_alternative_component_registry"></a>Specifying an alternative component registry</h4>
 <div class="paragraph">
-<p>To specify an alternative registry for the <code>cheEditor</code> and <code>chePlugin</code> component types, use the <code>registryUrl</code> parameter:</p>
+<p>To specify an alternative registry for <code>plugin</code> component types, use the <code>registryUrl</code> parameter:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - chePlugin:
+   - plugin:
       id: eclipse/che-machine-exec-plugin/0.0.1
       name: exec-plugin
       registryUrl: https://my-customregistry.com</code></pre>
@@ -634,12 +614,12 @@ parent:
 <div class="sect3">
 <h4 id="_specifying_a_component_by_linking_to_its_descriptor"><a class="anchor" href="#_specifying_a_component_by_linking_to_its_descriptor"></a>Specifying a component by linking to its descriptor</h4>
 <div class="paragraph">
-<p>An alternative way of specifying <code>cheEditor</code> or <code>chePlugin</code>, instead of using the editor or plug-in <code>id</code> (and optionally an alternative registry), is to provide a direct link to the component descriptor (typically named <code>meta.yaml</code>) by using the <code>reference</code> field:</p>
+<p>An alternative way of specifying <code>plugin</code>, instead of using the <code>id</code> (and optionally an alternative registry), is to provide a direct link to the component descriptor (typically named <code>meta.yaml</code>) by using the <code>reference</code> field:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - chePlugin:
+   - plugin:
       name: exec-plugin
       reference: https://raw.githubusercontent.com.../plugin/1.0.1/meta.yaml</code></pre>
 </div>
@@ -658,14 +638,14 @@ It is impossible to mix the <code>id</code> and <code>reference</code> fields in
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tuning_cheplugin_component_configuration"><a class="anchor" href="#_tuning_cheplugin_component_configuration"></a>Tuning chePlugin component configuration</h4>
+<h4 id="_tuning_plugin_component_configuration"><a class="anchor" href="#_tuning_plugin_component_configuration"></a>Tuning plugin component configuration</h4>
 <div class="paragraph">
-<p>A chePlugin component may need to be precisely tuned, and in such case, component preferences can be used. The example shows how to configure JVM using plug-in preferences.</p>
+<p>A plugin component may need to be precisely tuned, and in such case, component preferences can be used. The example shows how to configure JVM using plug-in preferences.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  id: redhat/java/0.38.0
-  chePlugin:
+  plugin:
     preferences:
        java.jdt.ls.vmargs: '-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication'</code></pre>
 </div>
@@ -676,7 +656,7 @@ It is impossible to mix the <code>id</code> and <code>reference</code> fields in
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  id: redhat/java/0.38.0
-  chePlugin:
+  plugin:
     preferences:
       go.lintFlags: ["--enable-all", "--new"]</code></pre>
 </div>
@@ -810,7 +790,7 @@ It is impossible to mix the <code>id</code> and <code>reference</code> fields in
 </div>
 <div class="paragraph">
 <p>If enabled, project sources mounts will be applied to every container of the given component.
-This parameter is also applicable for <code>chePlugin</code> type components.</p>
+This parameter is also applicable for <code>plugin</code> type components.</p>
 </div>
 </div>
 <div class="sect3">
@@ -921,7 +901,7 @@ components:
 </div>
 </div>
 <div class="paragraph">
-<p>Example specifying volumes for <code>cheEditor</code>/<code>chePlugin</code> type:</p>
+<p>Example specifying volumes for <code>plugin</code> type:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -929,7 +909,7 @@ components:
 metadata:
   name: MyDevfile
 components:
-  - cheEditor:
+  - plugin:
       name: theia-editor
       id: eclipse/che-theia/next
       env:
@@ -961,12 +941,12 @@ components:
 <div class="sect3">
 <h4 id="_specifying_container_memory_limit_for_components"><a class="anchor" href="#_specifying_container_memory_limit_for_components"></a>Specifying container memory limit for components</h4>
 <div class="paragraph">
-<p>To specify a container(s) memory limit for <code>container</code>, <code>chePlugin</code>, <code>cheEditor</code>, use the <code>memoryLimit</code> parameter:</p>
+<p>To specify a container(s) memory limit for <code>container</code>, <code>plugin</code>, use the <code>memoryLimit</code> parameter:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - chePlugin:
+   - plugin:
       name: exec-plugin
       id: eclipse/che-machine-exec-plugin/0.0.1
       memoryLimit: 1Gi
@@ -980,7 +960,7 @@ components:
 <p>This limit will be applied to every container of the given component.</p>
 </div>
 <div class="paragraph">
-<p>For the <code>cheEditor</code> and <code>chePlugin</code> component types, RAM limits can be described in the plug-in descriptor file, typically named <code>meta.yaml</code>.</p>
+<p>For <code>plugin</code> components, RAM limits can be described in the plug-in descriptor file, typically named <code>meta.yaml</code>.</p>
 </div>
 <div class="paragraph">
 <p>If none of them are specified, system-wide defaults will be applied (see description of <code>CHE_WORKSPACE_SIDECAR_DEFAULT__MEMORY__LIMIT__MB</code> system property).</p>
@@ -989,12 +969,12 @@ components:
 <div class="sect3">
 <h4 id="_specifying_container_memory_request_for_components"><a class="anchor" href="#_specifying_container_memory_request_for_components"></a>Specifying container memory request for components</h4>
 <div class="paragraph">
-<p>To specify a container(s) memory request for <code>chePlugin</code> or  <code>cheEditor</code>, use the <code>memoryRequest</code> parameter:</p>
+<p>To specify a container(s) memory request for <code>plugin</code> use the <code>memoryRequest</code> parameter:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - chePlugin:
+   - plugin:
       name: exec-plugin
       id: eclipse/che-machine-exec-plugin/0.0.1
       memoryLimit: 1Gi
@@ -1010,7 +990,7 @@ components:
 <p>This limit will be applied to every container of the given component.</p>
 </div>
 <div class="paragraph">
-<p>For the <code>cheEditor</code> and <code>chePlugin</code> component types, RAM requests can be described in the plug-in descriptor file, typically named <code>meta.yaml</code>.</p>
+<p>For <code>plugin</code> components, RAM requests can be described in the plug-in descriptor file, typically named <code>meta.yaml</code>.</p>
 </div>
 <div class="paragraph">
 <p>If none of them are specified, system-wide defaults are applied (see description of <code>CHE_WORKSPACE_SIDECAR_DEFAULT__MEMORY__REQUEST__MB</code> system property).</p>
@@ -1019,12 +999,12 @@ components:
 <div class="sect3">
 <h4 id="_specifying_container_cpu_limit_for_components"><a class="anchor" href="#_specifying_container_cpu_limit_for_components"></a>Specifying container CPU limit for components</h4>
 <div class="paragraph">
-<p>To specify a container(s) CPU limit for <code>chePlugin</code>, <code>cheEditor</code> or <code>container</code> use the <code>cpuLimit</code> parameter:</p>
+<p>To specify a container(s) CPU limit for <code>plugin</code> or <code>container</code> use the <code>cpuLimit</code> parameter:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - chePlugin:
+   - plugin:
       name: exec-plugin
        id: eclipse/che-machine-exec-plugin/0.0.1
        cpuLimit: 1.5
@@ -1038,7 +1018,7 @@ components:
 <p>This limit will be applied to every container of the given component.</p>
 </div>
 <div class="paragraph">
-<p>For the <code>cheEditor</code> and <code>chePlugin</code> component types, CPU limits can be described in the plug-in descriptor file, typically named <code>meta.yaml</code>.</p>
+<p>For the <code>plugin</code> components, CPU limits can be described in the plug-in descriptor file, typically named <code>meta.yaml</code>.</p>
 </div>
 <div class="paragraph">
 <p>If none of them are specified, system-wide defaults are applied (see description of <code>CHE_WORKSPACE_SIDECAR_DEFAULT__CPU__LIMIT__CORES</code> system property).</p>
@@ -1047,12 +1027,12 @@ components:
 <div class="sect3">
 <h4 id="_specifying_container_cpu_request_for_components"><a class="anchor" href="#_specifying_container_cpu_request_for_components"></a>Specifying container CPU request for components</h4>
 <div class="paragraph">
-<p>To specify a container(s) CPU request for <code>chePlugin</code>, <code>cheEditor</code> or <code>container</code> use the <code>cpuRequest</code> parameter:</p>
+<p>To specify a container(s) CPU request for <code>plugin</code> or <code>container</code> use the <code>cpuRequest</code> parameter:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - chePlugin:
+   - plugin:
       name: exec-plugin
       id: eclipse/che-machine-exec-plugin/0.0.1
       cpuLimit: 1.5
@@ -1068,7 +1048,7 @@ components:
 <p>This limit will be applied to every container of the given component.</p>
 </div>
 <div class="paragraph">
-<p>For the <code>cheEditor</code> and <code>chePlugin</code> component types, CPU requests can be described in the plug-in descriptor file, typically named <code>meta.yaml</code>.</p>
+<p>For the <code>pugin</code> component type, CPU requests can be described in the plug-in descriptor file, typically named <code>meta.yaml</code>.</p>
 </div>
 <div class="paragraph">
 <p>If none of them are specified, system-wide defaults are applied (see description of <code>CHE_WORKSPACE_SIDECAR_DEFAULT__CPU__REQUEST__CORES</code> system property).</p>
@@ -1078,7 +1058,7 @@ components:
 <h4 id="_environment_variables"><a class="anchor" href="#_environment_variables"></a>Environment variables</h4>
 <div class="paragraph">
 <p>Eclipse Che allows you to configure Docker containers by modifying the environment variables available in component&#8217;s configuration.
-Environment variables are supported by the following component types: <code>container</code>, <code>chePlugin</code>, <code>cheEditor</code>, <code>kubernetes</code>, <code>openshift</code>.
+Environment variables are supported by the following component types: <code>container</code>, <code>plugin</code>, <code>kubernetes</code>, <code>openshift</code>.
 If the component has multiple containers, environment variables will be provisioned for each container.</p>
 </div>
 <div class="listingblock">
@@ -1096,7 +1076,7 @@ components:
       env:
         - name: GOPATH
           value: $(CHE_PROJECTS_ROOT)/go
-  - cheEditor:
+  - plugin:
       name: theia-editor
       id: eclipse/che-theia/next
       memoryLimit: 2Gi
@@ -1278,7 +1258,7 @@ This setting potentially allows a <a href="https://en.wikipedia.org/wiki/Cross-s
 <p>When starting a new server within a component, Che autodetects this, and the UI offers to automatically expose this port as a <code>public</code> port. This is useful for debugging a web application, for example. It is impossible to do this for servers that autostart with the container (for example, a database server). For such components, specify the endpoints explicitly.</p>
 </div>
 <div class="paragraph">
-<p>Example specifying endpoints for <code>kubernetes</code>/<code>openshift</code> and <code>chePlugin</code>/<code>cheEditor</code> types:</p>
+<p>Example specifying endpoints for <code>kubernetes</code>/<code>openshift</code> and <code>plugin</code> types:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1286,7 +1266,7 @@ This setting potentially allows a <a href="https://en.wikipedia.org/wiki/Cross-s
 metadata:
   name: MyDevfile
 components:
-  - cheEditor:
+  - plugin:
       name: theia-editor
       id: eclipse/che-theia/next
       endpoints:
@@ -1296,14 +1276,14 @@ components:
           discoverable: true
           public: true
 
-  - chePlugin:
+  - plugin:
       id: redhat/php/latest
       memoryLimit: 1Gi
       endpoints:
       - name: 'php-endpoint'
         targetPort: 7777
 
-  - chePlugin:
+  - plugin:
       name: theia-editor
       id: eclipse/che-theia/next
       endpoints:
