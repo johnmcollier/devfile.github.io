@@ -300,8 +300,8 @@ projects:
       location: 'https://github.com/spring-projects/spring-petclinic.git'
       branch: master
 components:
-  - chePlugin
-      registryEntry:
+  - name: javaPlugin
+    plugin:
         id: redhat/java/latest</code></pre>
 </div>
 </div>
@@ -407,10 +407,13 @@ projects:
 <h4 id="_project_source_type_git"><a class="anchor" href="#_project_source_type_git"></a>Project-source type: git</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">source:
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">projects:
+  - name: my-project1
     git:
-      location: https://github.com/eclipse/che.git
-      startPoint: master           <i class="conum" data-value="1"></i><b>(1)</b>
+      remotes:
+        origin: "https://github.com/my-org/project1.git"
+      checkoutFrom:
+        revision: master           <i class="conum" data-value="1"></i><b>(1)</b>
       tag: 7.2.0
       commitId: 36fe587
       branch: master
@@ -480,11 +483,12 @@ projects:
     clonePath: resources/my-project
     zip:
       location: http://host.net/path/project-res.zip
-  - name: my-project
-    source:
+  - name: my-project2
       git:
-        location: https://github.com/my-org/project.git
-        branch: develop</code></pre>
+        remotes:
+          origin: "https://github.com/my-org/project2.git"
+        checkoutFrom:
+          revision: develop</code></pre>
 </div>
 </div>
 </div>
@@ -561,9 +565,9 @@ parent:
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - plugin:
-      id: eclipse/che-machine-exec-plugin/0.0.1
-      name: exec-plugin</code></pre>
+   - name: exec-plugin
+     plugin:
+      id: eclipse/che-machine-exec-plugin/0.0.1</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -581,9 +585,9 @@ parent:
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - plugin:
+   - name: exec-plugin
+     plugin:
       id: eclipse/che-machine-exec-plugin/0.0.1
-      name: exec-plugin
       registryUrl: https://my-customregistry.com</code></pre>
 </div>
 </div>
@@ -596,8 +600,8 @@ parent:
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - plugin:
-      name: exec-plugin
+   - name: exec-plugin
+     plugin:
       reference: https://raw.githubusercontent.com.../plugin/1.0.1/meta.yaml</code></pre>
 </div>
 </div>
@@ -650,8 +654,8 @@ It is impossible to mix the <code>id</code> and <code>reference</code> fields in
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-    - kubernetes:
-        name: mysql
+    - name: mysql
+      kubernetes:
         reference: petclinic.yaml
         selector:
           app.kubernetes.io/name: mysql
@@ -665,8 +669,8 @@ It is impossible to mix the <code>id</code> and <code>reference</code> fields in
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-    - kubernetes:
-        name: mysql
+    - name: mysql
+      kubernetes:
         reference: petclinic.yaml
         referenceContent: |
              kind: List
@@ -693,8 +697,8 @@ It is impossible to mix the <code>id</code> and <code>reference</code> fields in
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-    - kubernetes:
-        name: appDeployment
+    - name: appDeployment
+      kubernetes:
         reference: app-deployment.yaml
         entrypoints:
         - parentName: mysqlServer
@@ -739,8 +743,8 @@ It is impossible to mix the <code>id</code> and <code>reference</code> fields in
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-    - kubernetes:
-        name: appDeployment
+    - name: appDeployment
+      kubernetes:
         reference: app-deployment.yaml
         env:
           - name: ENV_VAR
@@ -759,8 +763,8 @@ It is impossible to mix the <code>id</code> and <code>reference</code> fields in
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">   components:
-      - kubernetes:
-          name: appDeployment
+      - name: appDeployment
+        kubernetes:
           reference: app-deployment.yaml
           mountSources: true</code></pre>
 </div>
@@ -778,8 +782,8 @@ This parameter is also applicable for <code>plugin</code> type components.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml"> components:
-   - container:
-      name: maven
+   - name: maven
+     container:
       image: eclipe/maven-jdk8:latest
       volumeMounts:
         - name: mavenrepo
@@ -810,8 +814,8 @@ This parameter is also applicable for <code>plugin</code> type components.</p>
 metadata:
     name: MyDevfile
 components:
-  - container:
-      name: go
+  - name: go
+    container:
       image: golang
       memoryLimit: 512Mi
       command: ['sleep', 'infinity']</code></pre>
@@ -834,8 +838,8 @@ components:
 metadata:
     name: MyDevfile
 components:
-  - container:
-      name: go
+  - name: go
+    container:
       image: golang
       memoryLimit: 512Mi
       mountSources: true
@@ -867,7 +871,8 @@ components:
 metadata:
   name: MyDevfile
 components:
-  - container:
+  - name: MyDevfile
+    container:
       image: golang
       memoryLimit: 512Mi
       mountSources: true
@@ -886,8 +891,8 @@ components:
 metadata:
   name: MyDevfile
 components:
-  - plugin:
-      name: theia-editor
+  - name: theia-editor
+    plugin:
       id: eclipse/che-theia/next
       env:
       - name: HOME
@@ -906,8 +911,8 @@ components:
 metadata:
   name: MyDevfile
 components:
-  - openshift:
-      name: mongo
+  - name: mongo
+    openshift:
       reference: mongo-db.yaml
       volumeMounts:
       - name: mongo-persistent-storage
@@ -923,12 +928,12 @@ components:
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - plugin:
-      name: exec-plugin
+   - name: exec-plugin
+     plugin:
       id: eclipse/che-machine-exec-plugin/0.0.1
       memoryLimit: 1Gi
-   - container:
-      name: maven
+   -   name: maven
+     container:
       image: eclipe/maven-jdk8:latest
       memoryLimit: 512M</code></pre>
 </div>
@@ -951,13 +956,13 @@ components:
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - plugin:
-      name: exec-plugin
+   - name: exec-plugin
+     plugin:
       id: eclipse/che-machine-exec-plugin/0.0.1
       memoryLimit: 1Gi
       memoryRequest: 512M
-   - container:
-      name: maven
+   - name: maven
+     container:
       image: eclipe/maven-jdk8:latest
       memoryLimit: 512M
       memoryRequest: 256M</code></pre>
@@ -981,12 +986,12 @@ components:
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - plugin:
-      name: exec-plugin
+   - name: exec-plugin
+     plugin:
        id: eclipse/che-machine-exec-plugin/0.0.1
        cpuLimit: 1.5
-   - container:
-      name: maven
+   - name: maven
+     container:
       image: eclipe/maven-jdk8:latest
       cpuLimit: 750m</code></pre>
 </div>
@@ -1009,13 +1014,13 @@ components:
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">  components:
-   - plugin:
-      name: exec-plugin
+   - name: exec-plugin
+     plugin:
       id: eclipse/che-machine-exec-plugin/0.0.1
       cpuLimit: 1.5
       cpuRequest: 0.225
-   - container:
-      name: maven
+   - name: maven
+     container:
       image: eclipe/maven-jdk8:latest
       cpuLimit: 750m
       cpuRequest: 450m</code></pre>
@@ -1044,8 +1049,8 @@ If the component has multiple containers, environment variables will be provisio
 metadata:
   name: MyDevfile
 components:
-  - container:
-      name: go
+  - name: go
+    container:
       image: golang
       memoryLimit: 512Mi
       mountSources: true
@@ -1053,8 +1058,8 @@ components:
       env:
         - name: GOPATH
           value: $(CHE_PROJECTS_ROOT)/go
-  - plugin:
-      name: theia-editor
+  - name: theia-editor
+    plugin:
       id: eclipse/che-theia/next
       memoryLimit: 2Gi
       env:
@@ -1139,10 +1144,11 @@ projects:
   - name: my-go-project
     clonePath: go/src/github.com/acme/my-go-project
     git:
-      location: https://github.com/acme/my-go-project.git
+      remotes:
+        origin: "https://github.com/acme/my-go-project.git"
 components:
-  - container:
-      name: go
+  - name: go
+    container:
       image: golang
       memoryLimit: 512Mi
       mountSources: true
@@ -1160,8 +1166,8 @@ components:
           public: true
           protocol: tcp
           scheme: http
-  - container:
-      name: postgres
+  - name: postgres
+    container:
       image: postgres
       memoryLimit: 512Mi
       env:
@@ -1243,8 +1249,8 @@ This setting potentially allows a <a href="https://en.wikipedia.org/wiki/Cross-s
 metadata:
   name: MyDevfile
 components:
-  - plugin:
-      name: theia-editor
+  - name: theia-editor
+    plugin:
       id: eclipse/che-theia/next
       endpoints:
       - name: 'theia-extra-endpoint'
@@ -1334,9 +1340,11 @@ projects:
   - name: my-go-project
     clonePath: go/src/github.com/acme/my-go-project
     git:
-      location: https://github.com/acme/my-go-project.git
+      remotes:
+        origin: "https://github.com/acme/my-go-project.git"
 components:
-  -  kubernetes:
+  - name: MyDevfile
+    kubernetes:
       reference: ../relative/path/postgres.yaml</code></pre>
 </div>
 </div>
@@ -1422,9 +1430,11 @@ projects:
   - name: my-go-project
     clonePath: go/src/github.com/acme/my-go-project
     git:
-      location: https://github.com/acme/my-go-project.git
+      remotes:
+        origin: "https://github.com/acme/my-go-project.git"
 components:
-  - kubernetes:
+  - name: MyDevfile
+    kubernetes:
       reference: ../relative/path/postgres.yaml
       selector:
         app: postgres</code></pre>
@@ -1443,8 +1453,8 @@ components:
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml"> commands:
-   - exec:
-      id: build
+   - id: build
+     exec:
       component: mysql
       commandLine: mvn clean
       workingDir: /projects/spring-petclinic</code></pre>
@@ -1495,10 +1505,11 @@ projects:
   - name: my-go-project
     clonePath: go/src/github.com/acme/my-go-project
     git:
-      location: https://github.com/acme/my-go-project.git
+      remotes:
+        origin: "https://github.com/acme/my-go-project.git"
 components:
-  - container:
-      name: go-cli
+  - name: go-cli
+    container:
       image: golang
       memoryLimit: 512Mi
       mountSources: true
@@ -1509,8 +1520,8 @@ components:
         - name: GOCACHE
           value: /tmp/go-cache
 commands:
-  - exec:
-      id: compile and run
+  - id: compile and run
+    exec:
       component: go-cli
       commandLine: “go get -d &amp;&amp; go run main.go”
       workingDir: “${CHE_PROJECTS_ROOT}/src/github.com/acme/my-go-project”
@@ -1556,9 +1567,11 @@ projects:
   - name: my-go-project
     clonePath: go/src/github.com/acme/my-go-project
     git:
-      location: https://github.com/acme/my-go-project.git
+      remotes:
+        origin: "https://github.com/acme/my-go-project.git"
 commands:
-  - vscode-task:
+  - id: task
+    vscode-task:
       name: tasks
       referenceContent: &gt;
           {
@@ -1594,22 +1607,23 @@ projects:
   - name: my-maven-project
     clonePath: maven/src/github.com/acme/my-maven-project
     git:
-      location: https://github.com/acme/my-maven-project.git
+      remotes:
+        origin: "https://github.com/acme/my-maven-project.git"
 components:
-  - container:
-      name: maven
+  - name: maven
+    container:
       image: eclipe/maven-jdk8:latest
       mountSources: true
       command: ['tail']
 commands:
-  - exec:
-      id: package
+  - id: package
+    exec:
       component: maven
       commandLine: “mvn package”
       group:
         kind: build
-  - exec:
-      id: install
+  - id: install
+    exec:
       component: maven
       commandLine: “mvn install”
       group:
@@ -1632,29 +1646,30 @@ projects:
   - name: my-maven-project
     clonePath: maven/src/github.com/acme/my-maven-project
     git:
-      location: https://github.com/acme/my-maven-project.git
+      remotes:
+        origin: "https://github.com/acme/my-maven-project.git"
 components:
-  - container:
-      name: maven
+  - name: maven
+    container:
       image: eclipe/maven-jdk8:latest
       mountSources: true
       command: ['tail']
 commands:
-  - exec:
-      id: package
+  - id: package
+    exec:
       component: maven
       commandLine: “mvn package”
       group:
         kind: build
-  - exec:
-      id: install
+  - id: install
+    exec:
       component: maven
       commandLine: “mvn install”
       group:
         kind: build
         isDefault: true
-  - composite:
-      id: installAndPackage
+  - id: installAndPackage
+    composite:
       commands:
         - install
         - package
@@ -1670,8 +1685,8 @@ commands:
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">commands:
-    - exec:
-        id: tasks
+    - id: tasks
+      exec:
         previewUrl:
           port: 8080     <i class="conum" data-value="1"></i><b>(1)</b>
           path: /myweb   <i class="conum" data-value="2"></i><b>(2)</b>
@@ -1749,8 +1764,8 @@ commands:
 metadata:
   name: petclinic-dev-environment
 components:
-  - kubernetes:
-      name: myApp
+  - name: myApp
+    kubernetes:
       local: my-app.yaml
 attributes:
   editorFree: true</code></pre>
@@ -1771,7 +1786,8 @@ metadata:
 projects:
   - name: petclinic
     git:
-      location: 'https://github.com/che-samples/web-java-spring-petclinic.git'
+      remotes:
+        origin: "https://github.com/che-samples/web-java-spring-petclinic.git"
 attributes:
   persistVolumes: false</code></pre>
 </div>
