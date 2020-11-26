@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Devfile v2 Migration Guide :: Devfile // Docs</title>
-    <meta name="description" content="A guide to migrate a v1 Devfile to v2">
+    <title>Migrating from devfile v1.0 to devfile v2.0 :: Devfile // Docs</title>
+    <meta name="description" content="A guide to migrate a v1.0 Devfile to v2.0">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="stylesheet" href="../_/css/extra.css">
@@ -92,7 +92,7 @@
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Devfile v2 Migration Guide</h1>
+<h1 class="page">Migrating from devfile v1.0 to devfile v2.0</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -101,10 +101,10 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_schema_version"><a class="anchor" href="#_schema_version"></a>Schema Version</h2>
+<h2 id="_schema_version"><a class="anchor" href="#_schema_version"></a>Schema version</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Attribute <code>apiVersion</code> has been renamed <code>schemaVersion</code>:</p>
+<p>Attribute <code>apiVersion</code> has been renamed to <code>schemaVersion</code>:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -135,18 +135,18 @@ metadata:
 </tbody>
 </table>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/7">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/7">Devfile should have a <code>schemaVersion</code> attribute</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_to_migrate_projects"><a class="anchor" href="#_how_to_migrate_projects"></a>How to migrate projects</h2>
+<h2 id="_migrating_projects"><a class="anchor" href="#_migrating_projects"></a>Migrating projects</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There are NO major changes in the <code>projects</code> section of the devfile. A project specified in a v1.0 devfile will work as it is in a devfile v2.0. The only major change is the addition of a new kind of project: <code>starterProjects</code>. Those are supposed to be used in interactive mode only (user pick one) and the git repo get not be cloned but only source code get copied (kind of what <code>git archive --remote=&lt;repository URL&gt; | tar -t</code> would do).</p>
+<p>A project specified in a v1.0 devfile works as is in a devfile v2.0. The only major change is the addition of a new kind of project: <code>starterProjects</code>. Those are supposed to be used in interactive mode only (user must pick one) and the Git repository cannot be cloned. Instead, only source code is to be copied (for example, <code>git archive --remote=<em>&lt;repository URL&gt;</em> | tar -t</code>).</p>
 </div>
 <div class="sect2">
-<h3 id="_starterprojects_and_projects_description"><a class="anchor" href="#_starterprojects_and_projects_description"></a>starterProjects and projects description</h3>
+<h3 id="_starterprojects_and_projects_description"><a class="anchor" href="#_starterprojects_and_projects_description"></a><code>starterProjects</code> and <code>projects</code> description</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v2.0
@@ -159,21 +159,21 @@ starterProjects:
 </div>
 </div>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/42">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/42">starterProjects and projects description</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_to_migrate_components"><a class="anchor" href="#_how_to_migrate_components"></a>How to migrate components</h2>
+<h2 id="_migrating_components"><a class="anchor" href="#_migrating_components"></a>Migrating components</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There ARE major changes in the <code>components</code> section of the devfile. A component specified in a v1.0 devfile will NOT work as it is in a devfile v2.0.</p>
+<p>There are major changes in the <code>components</code> section of the devfile. A component specified in a v1.0 devfile does not work as is in a devfile v2.0.</p>
 </div>
 <div class="sect2">
-<h3 id="_component_is_a_polymophic_type"><a class="anchor" href="#_component_is_a_polymophic_type"></a>Component is a polymophic type</h3>
+<h3 id="_component_is_a_polymorphic_type"><a class="anchor" href="#_component_is_a_polymorphic_type"></a>Component is a polymorphic type</h3>
 <div class="paragraph">
-<p>For a better syntax validation component now is defined as a polymorphic type and can be implemented as <code>container</code>, <code>kubernetes</code>, <code>openshift</code>, <code>plugin</code> or <code>volume</code>.</p>
+<p>For better syntax validation, a component now is defined as a polymorphic type and can be implemented as <code>container</code>, <code>kubernetes</code>, <code>openshift</code>, <code>plugin</code>, or <code>volume</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -191,58 +191,58 @@ components:
 </div>
 </div>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/4">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/4">Polymorphic component type UX in a devfile</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_shared_volumes_across_components"><a class="anchor" href="#_shared_volumes_across_components"></a>Shared Volumes Across Components</h3>
+<h3 id="_shared_volumes_across_components"><a class="anchor" href="#_shared_volumes_across_components"></a>Shared volumes across components</h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/19">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/19">Allow volumes to be shared across components</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_out_of_main_pod_compoenents"><a class="anchor" href="#_out_of_main_pod_compoenents"></a>Out of Main Pod Compoenents</h3>
+<h3 id="_out_of_main_pod_components"><a class="anchor" href="#_out_of_main_pod_components"></a>Out of main pod components</h3>
 <div class="paragraph">
-<p>Details can be found in the  <a href="https://github.com/devfile/api/issues/48">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/48">Out of main pod containers</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_replace_alias_with_name"><a class="anchor" href="#_replace_alias_with_name"></a>Replace Alias with Name</h3>
+<h3 id="_replace_alias_with_name"><a class="anchor" href="#_replace_alias_with_name"></a>Replace alias with name</h3>
 <div class="paragraph">
-<p>Details can be found in the  <a href="https://github.com/che-incubator/devworkspace-api/issues/9">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/9">Names field mandatory for k8s/openshift, optional for plugins</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_renaming_dockerimage_component_type"><a class="anchor" href="#_renaming_dockerimage_component_type"></a>Renaming dockerimage component type</h3>
+<h3 id="_renaming_dockerimage_component_type"><a class="anchor" href="#_renaming_dockerimage_component_type"></a>Renaming <code>dockerimage</code> component type</h3>
 <div class="paragraph">
-<p>Details can be found in the  <a href="https://github.com/che-incubator/devworkspace-api/issues/8">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/8">Renaming dockerimage component type</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_specify_sources_path_for_containers"><a class="anchor" href="#_specify_sources_path_for_containers"></a>Specify sources path for containers</h3>
+<h3 id="_specifying_sources_path_for_containers"><a class="anchor" href="#_specifying_sources_path_for_containers"></a>Specifying sources path for containers</h3>
 <div class="paragraph">
-<p>Details can be found in the  <a href="https://github.com/che-incubator/devworkspace-api/issues/17">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/17">Specify the source mapping path for component containers</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_specify_size_of_volume_for_component"><a class="anchor" href="#_specify_size_of_volume_for_component"></a>Specify size of volume for component</h3>
+<h3 id="_specifying_volume_size_for_components"><a class="anchor" href="#_specifying_volume_size_for_components"></a>Specifying volume size for components</h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/14">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/14">Allow the size of a component&#8217;s volume to be specified in a Devfile</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_containers_endpoints_routesingresses"><a class="anchor" href="#_containers_endpoints_routesingresses"></a>Containers endpoints (routes/ingresses)</h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/33">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/33">Containers endpoints (routes/ingresses)</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_to_migrate_plugins"><a class="anchor" href="#_how_to_migrate_plugins"></a>How to migrate plugins</h2>
+<h2 id="_migrating_plug_ins"><a class="anchor" href="#_migrating_plug_ins"></a>Migrating plug-ins</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There ARE major changes about the definition of plugins in a devfile. Plugins are now specified using a devfile. A plugin specified in a v1.0 meta.yaml will NOT work as it is in a devfile v2.0.</p>
+<p>Plug-ins are specified using a devfile. A plug-in specified in a v1.0 <code>meta.yaml</code> does not work as is in a devfile v2.0.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -312,62 +312,62 @@ components:
 </div>
 </div>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/31">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/31">Better plugin mechanism</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_to_migrate_commands"><a class="anchor" href="#_how_to_migrate_commands"></a>How to migrate commands</h2>
+<h2 id="_migrating_commands"><a class="anchor" href="#_migrating_commands"></a>Migrating commands</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>There ARE major changes in the <code>commands</code> section of the devfile. A command specified in a v1.0 devfile will NOT work as it is in a devfile v2.0.</p>
 </div>
 <div class="sect2">
-<h3 id="_command_groups_buildruntestdebug"><a class="anchor" href="#_command_groups_buildruntestdebug"></a>Command Groups: build,run,test,debug</h3>
+<h3 id="_command_groups_build_run_test_debug"><a class="anchor" href="#_command_groups_build_run_test_debug"></a>Command Groups: build, run, test, debug</h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/27">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/27">Command group (application lifecycle)</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_apply_command"><a class="anchor" href="#_apply_command"></a>Apply Command</h3>
+<h3 id="_applying_command"><a class="anchor" href="#_applying_command"></a>Applying command</h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/devfile/api/issues/56">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/56">New type of command to <code>apply</code> a component</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_environment_varibables_for_a_specific_command"><a class="anchor" href="#_environment_varibables_for_a_specific_command"></a>Environment Varibables for a Specific Command</h3>
+<h3 id="_environment_variables_for_a_specific_command"><a class="anchor" href="#_environment_variables_for_a_specific_command"></a>Environment variables for a specific command</h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/21">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/21">Environment variables for a specific command</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_renaming_workdir_into_workingdir"><a class="anchor" href="#_renaming_workdir_into_workingdir"></a>Renaming workdir into workingDir</h3>
+<h3 id="_renaming_workdir_into_workingdir"><a class="anchor" href="#_renaming_workdir_into_workingdir"></a>Renaming <code>workdir</code> into <code>workingDir</code></h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/22">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/22">Renaming workdir into workingDir</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_id_and_label_for_composite_commands"><a class="anchor" href="#_id_and_label_for_composite_commands"></a>Id and label for Composite Commands</h3>
+<h3 id="_id_and_label_for_composite_commands"><a class="anchor" href="#_id_and_label_for_composite_commands"></a><code>Id</code> and <code>label</code> for composite commands</h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/18">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/18">Composite commands label and id</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_run_exec_commands_as_specific_user"><a class="anchor" href="#_run_exec_commands_as_specific_user"></a>Run exec Commands as Specific User</h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/34">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/34">Run exec commands as specified user</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_devfile_metadata_add_a_link_to_an_external_website"><a class="anchor" href="#_devfile_metadata_add_a_link_to_an_external_website"></a>Devfile metadata: add a link to an external website</h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/38">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/38">Devfile metadata: add a link to an external website</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_stackdevfile_matching_rules"><a class="anchor" href="#_stackdevfile_matching_rules"></a>Stack/Devfile Matching Rules</h3>
 <div class="paragraph">
-<p>Details can be found in the <a href="https://github.com/che-incubator/devworkspace-api/issues/40">corresponding issue</a>.</p>
+<p>For more details, see <a href="https://github.com/devfile/api/issues/40">Stacks/Devfile matching rules</a>.</p>
 </div>
 </div>
 </div>
@@ -376,7 +376,7 @@ components:
 <h2 id="_using_parent_devfiles_to_build_reusable_stacks"><a class="anchor" href="#_using_parent_devfiles_to_build_reusable_stacks"></a>Using parent devfiles to build reusable stacks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>One of the major changes in the 2.0.0 specification is the addition of the concept of parent. That allows refering a devfile (the parent) from a distinct devfile and makes it possible to reuse in multiple devfiles the same parent (the stack).</p>
+<p>One of the major changes in the 2.0.0 specification is the addition of the concept of parent. That allows referring a devfile (the parent) from a distinct devfile and makes it possible to reuse in multiple devfiles the same parent (the stack).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -403,7 +403,7 @@ commands:                                 # &lt;--- commands are added to parent
 </div>
 </div>
 <div class="paragraph">
-<p>Details are in the <a href="https://github.com/che-incubator/devworkspace-api/issues/25">corresponding issue</a>.</p>
+<p>Details are in the <a href="https://github.com/devfile/api/issues/25">Parent Devfiles</a>.</p>
 </div>
 </div>
 </div>
@@ -451,7 +451,7 @@ events:
 </div>
 </div>
 <div class="paragraph">
-<p>Details are in the <a href="https://github.com/che-incubator/devworkspace-api/issues/32">corresponding issue</a>.</p>
+<p>Details are in the <a href="https://github.com/devfile/api/issues/32">Add lifecycle bindings to bind commands to specific events</a>.</p>
 </div>
 </div>
 </div>
@@ -459,7 +459,162 @@ events:
 <h2 id="_new_metadata"><a class="anchor" href="#_new_metadata"></a>New metadata</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In v2 of the devfile we have added some new metadata like <code>version</code> (this is the <a href="https://github.com/che-incubator/devworkspace-api/issues/10">corresponding issue</a>) and some mandatory metadata for plugins (this is the <a href="https://github.com/devfile/api/issues/31">corresponding issue</a>).</p>
+<p>Version 2 of the devfile adds new metadata, including <code>version</code> (see <a href="https://github.com/devfile/api/issues/10">The devfile schema/samples should have version and name</a>) and some mandatory metadata for plug-ins (see <a href="https://github.com/devfile/api/issues/31">Better plugin mechanism</a>).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_exec_command_requires_a_defined_component"><a class="anchor" href="#_the_exec_command_requires_a_defined_component"></a>The <code>exec</code> command requires a defined component</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>exec</code> now must have a component explicitly defined.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v1.0
+---
+  - name: helloWorld
+      exec:
+        env:
+          - name: "USER"
+            value: "John Doe"
+        commandLine: 'echo "Hello ${USER}"'
+        component: build-tools</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v2.0
+---
+  - id: helloWorld
+    exec:
+      component: "mycomponent"
+      env:
+        - name: "USER"
+          value: "John Doe"
+      commandLine: 'echo "Hello ${USER}"'
+      component: build-tools</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For more details, see <a href="https://github.com/devfile/api/issues/152">Exec command should make component required</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_support_of_multiple_remotes_for_a_git_project"><a class="anchor" href="#_support_of_multiple_remotes_for_a_git_project"></a>Support of multiple remotes for a Git project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Devfile v2 supports multiple remotes for a Git project.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example of a project with multiple remotes defined</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">projects:
+  - name: project
+    git:
+      remotes:
+        origin: "https://github.com/amisevsk/web-nodejs-sample.git"
+        upstream: "https://github.com/che-samples/web-nodejs-sample.git"
+        gh-collaborator: "https://github.com/gh-collaborator/web-nodejs-sample.git"
+      checkoutFrom: <i class="conum" data-value="1"></i><b>(1)</b>
+        revision: foo <i class="conum" data-value="2"></i><b>(2)</b>
+        remote: upstream <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Mandatory if there is more than one remote.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The revision that should be used checked out. May be a branch name, tag, or commit id. Default branch should be checked out if missing.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The remote name that should be used as init. Required if there are more than one remote configured.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For more details, see <a href="https://github.com/devfile/api/issues/104">Support multiple remotes for projects to support forking workflow</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_name_and_id_moved_to_a_top_level"><a class="anchor" href="#_name_and_id_moved_to_a_top_level"></a><code>name</code> and <code>id</code> moved to a top-level</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v1.0
+---
+components:
+  - container:
+      name: tools</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v2.0
+---
+components:
+  - name: tools
+    container:</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>More details are in the <a href="https://github.com/devfile/api/issues/102">corresponding issue</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mountsources_are_true_by_default"><a class="anchor" href="#_mountsources_are_true_by_default"></a><code>mountSources</code> are true by default</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>mountSources</code> field is defined as <code>true</code> for all non-plug-in components and components that do not set <code>dedicatedPod</code> to <code>true</code>.
+For more details, see <a href="https://github.com/devfile/api/issues/75">mountsources default value for containers</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hotreloadcapable_added_to_exec_commands"><a class="anchor" href="#_hotreloadcapable_added_to_exec_commands"></a><code>hotReloadCapable</code> added to <code>exec</code> commands</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>hotReloadCapable</code> fields defines whether the command is capable of reloading itself when source code changes. If set to <code>true</code>, the command is not restarted, and it is expected to handle file changes on its own.
+Default value is <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>For more details, see <a href="https://github.com/devfile/api/issues/64">configuration option to avoid unncessary restarts of process</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_commandgrouptype_has_been_renamed_to_commandgroupkind"><a class="anchor" href="#_commandgrouptype_has_been_renamed_to_commandgroupkind"></a><code>CommandGroupType</code> has been renamed to <code>CommandGroupKind</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more details, see <a href="https://github.com/devfile/api/issues/59">Rename command group type</a>.</p>
 </div>
 </div>
 </div>
