@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Migrating from devfile v1.0 to devfile v2.0 :: Devfile // Docs</title>
-    <meta name="description" content="A guide to migrate a v1.0 Devfile to v2.0">
+    <title>Untitled :: Devfile Documentation</title>
+    <link rel="canonical" href="https://docs.devfile.io/devfile/migration_guide.html">
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../_/css/site.css">
 <link rel="stylesheet" href="../_/css/extra.css">
-<link rel="icon" href="../_/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../_/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
   </head>
   <body class="article">
 <header class="header" role="banner">
@@ -38,21 +39,102 @@
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="index.html">devfile</a></h3>
+    <h3 class="title"><a href="user-guide/index.html">Devfile User Guide</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="api-reference.html">Devfile API reference</a>
+    <a class="nav-link" href="user-guide/index.html">Overview</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="assembly_making-a-workspace-portable-using-a-devfile.html">Guide for Stack Authors</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="user-guide/authoring-stacks.html">Authoring stacks</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/adding-schema-version-to-a-devfile.html">Adding schema version</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="migration_guide.html">Devfile v2 Migration Guide</a>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/adding-a-name-to-a-devfile.html">Adding a name</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/adding-projects-to-a-devfile.html">Adding projects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/adding-commands-to-a-devfile.html">Adding commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="user-guide/adding-components-to-a-devfile.html">Adding components</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="user-guide/adding-plugin-component-to-a-devfile.html">Adding plugin component</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="user-guide/adding-kubernetes-component-to-a-devfile.html">Adding kubernetes component</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="user-guide/adding-container-component-to-a-devfile.html">Adding container component</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="user-guide/specifying-persistent-storage.html">Specifying persistent storage</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="user-guide/limiting-resources-usage.html">Limiting resources usage</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="user-guide/defining-environment-variables.html">Defining environment variables</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="user-guide/defining-endpoints.html">Defining endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="user-guide/defining-kubernetes-resources.html">Defining Kubernetes resources</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/adding-attributes-to-a-devfile.html">Adding attributes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/adding-event-bindings.html">Adding event bindings</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/refering-to-a-parent-devfile-in-a-devfile.html">Refering to a parent</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="https://github.com/devfile/api/tree/master/samples/devfiles">Devfile Samples</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="user-guide/migrating-to-devfile-v2.html">Migrating to devfile v2</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/migrating-schema-version.html">Migrating schema version</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/migrating-projects.html">Migrating projects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/migrating-components.html">Migrating components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/migrating-plug-ins.html">Migrating plug-ins</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/migrating-commands.html">Migrating commands</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/adding-event-bindings.html">Adding event bindings</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-guide/refering-to-a-parent-devfile-in-a-devfile.html">Refering to a parent</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-guide/api-reference.html">API reference</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-guide/devfile-samples.html">Devfile samples</a>
   </li>
 </ul>
   </li>
@@ -61,15 +143,15 @@
 </div>
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
-    <span class="title">devfile</span>
+    <span class="title">Devfile User Guide</span>
     <span class="version">master</span>
   </div>
   <ul class="components">
     <li class="component is-current">
-      <span class="title">devfile</span>
+      <span class="title">Devfile User Guide</span>
       <ul class="versions">
         <li class="version is-current is-latest">
-          <a href="index.html">master</a>
+          <a href="user-guide/index.html">master</a>
         </li>
       </ul>
     </li>
@@ -81,543 +163,14 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link"></a>
+  <a href="user-guide/index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="index.html">devfile</a></li>
-    <li><a href="migration_guide.html">Devfile v2 Migration Guide</a></li>
-  </ul>
 </nav>
   <div class="edit-this-page"><a href="https://github.com/devfile/docs/edit/master/docs/modules/ROOT/pages/migration_guide.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Migrating from devfile v1.0 to devfile v2.0</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>This guide explains how to migrate an existing v1.0 devfile to v2.0.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_schema_version"><a class="anchor" href="#_schema_version"></a>Schema version</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Attribute <code>apiVersion</code> has been renamed to <code>schemaVersion</code>:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v1.0
----
-apiVersion: 1.0.0
-metadata:
-  name: che-in-che-out</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v2.0
----
-schemaVersion: 2.0.0
-metadata:
-  name: che-in-che-out</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/7">Devfile should have a <code>schemaVersion</code> attribute</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_migrating_projects"><a class="anchor" href="#_migrating_projects"></a>Migrating projects</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A project specified in a v1.0 devfile works as is in a devfile v2.0. The only major change is the addition of a new kind of project: <code>starterProjects</code>. Those are supposed to be used in interactive mode only (user must pick one) and the Git repository cannot be cloned. Instead, only source code is to be copied (for example, <code>git archive --remote=<em>&lt;repository URL&gt;</em> | tar -t</code>).</p>
-</div>
-<div class="sect2">
-<h3 id="_starterprojects_and_projects_description"><a class="anchor" href="#_starterprojects_and_projects_description"></a><code>starterProjects</code> and <code>projects</code> description</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v2.0
----
-starterProjects:
-  - name: "kafka-project"
-    description: "Use this app to get a nodejs application for working with kafka"
-  - name: "simple-project"
-    description: "Use this app to get a simple "hello world" nodejs application"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/42">starterProjects and projects description</a>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_migrating_components"><a class="anchor" href="#_migrating_components"></a>Migrating components</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There are major changes in the <code>components</code> section of the devfile. A component specified in a v1.0 devfile does not work as is in a devfile v2.0.</p>
-</div>
-<div class="sect2">
-<h3 id="_component_is_a_polymorphic_type"><a class="anchor" href="#_component_is_a_polymorphic_type"></a>Component is a polymorphic type</h3>
-<div class="paragraph">
-<p>For better syntax validation, a component now is defined as a polymorphic type and can be implemented as <code>container</code>, <code>kubernetes</code>, <code>openshift</code>, <code>plugin</code>, or <code>volume</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v2.0
----
-components:
-  - container:
-        image: maven
-        ...
-  - container:
-        image: nodejs
-        ...
-  - kubernetes:
-       reference: https://.../mongo.yaml</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/4">Polymorphic component type UX in a devfile</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_shared_volumes_across_components"><a class="anchor" href="#_shared_volumes_across_components"></a>Shared volumes across components</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/19">Allow volumes to be shared across components</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_out_of_main_pod_components"><a class="anchor" href="#_out_of_main_pod_components"></a>Out of main pod components</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/48">Out of main pod containers</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_replace_alias_with_name"><a class="anchor" href="#_replace_alias_with_name"></a>Replace alias with name</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/9">Names field mandatory for k8s/openshift, optional for plugins</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_renaming_dockerimage_component_type"><a class="anchor" href="#_renaming_dockerimage_component_type"></a>Renaming <code>dockerimage</code> component type</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/8">Renaming dockerimage component type</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_specifying_sources_path_for_containers"><a class="anchor" href="#_specifying_sources_path_for_containers"></a>Specifying sources path for containers</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/17">Specify the source mapping path for component containers</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_specifying_volume_size_for_components"><a class="anchor" href="#_specifying_volume_size_for_components"></a>Specifying volume size for components</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/14">Allow the size of a component&#8217;s volume to be specified in a Devfile</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_containers_endpoints_routesingresses"><a class="anchor" href="#_containers_endpoints_routesingresses"></a>Containers endpoints (routes/ingresses)</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/33">Containers endpoints (routes/ingresses)</a>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_migrating_plug_ins"><a class="anchor" href="#_migrating_plug_ins"></a>Migrating plug-ins</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Plug-ins are specified using a devfile. A plug-in specified in a v1.0 <code>meta.yaml</code> does not work as is in a devfile v2.0.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v2.0
----
-java8.yaml
----
-schemaVersion: 2.0.0
-metadata:
-  publisher: redhat
-  name: java8
-  version: 0.57.0
-  displayName: Language Support for Java 8
-  title: Language Support for Java(TM) by ...
-  description: Java Linting, Intellisense ...
-  icon: https://.../logo-eclipseche.svg
-  repository: https://github.../vscode-java
-  category: Language
-  firstPublicationDate: "2020-02-20"
-  pluginType: che-theia-vsx # &lt;== mandatory
-                            # for plugins
-                      # Valid types:
-                      #   che-theia-vsx
-                      #   che-editor,
-                      #   che-theia-plugin,
-                      #   che-theia-ext,
-                      #   generic-service,
-                      #   generic-ui
-parent:
-  id: redhat/theia-vsx-template/latest
-  components:
-    - container:
-       name: vsx-installer
-       env:
-        - name: VSX_LIST
-          value: java-dbg.vsix,java.vsix
-components:
- - kubernetes:
-    name: ...
-    reference: ...
- - container:
-    image: ...che-sidecar-java
-    name: vscode-java
-    memoryLimit: "1500Mi"
-    volumeMounts:
-     - path: "/home/theia/.m2"
-       name: m2
- - volume:
-    name: m2</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>And then can be referenced from a distinct devfile:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v2.0
----
-devfile.yaml
----
-components:
-- plugin:
-    name: java language server
-    id: redhat/java11/0.57.0 # other then by `id`, a plugin
-                             # can be referenced by `uri` and
-                             # `kubernetes`</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/31">Better plugin mechanism</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_migrating_commands"><a class="anchor" href="#_migrating_commands"></a>Migrating commands</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There ARE major changes in the <code>commands</code> section of the devfile. A command specified in a v1.0 devfile will NOT work as it is in a devfile v2.0.</p>
-</div>
-<div class="sect2">
-<h3 id="_command_groups_build_run_test_debug"><a class="anchor" href="#_command_groups_build_run_test_debug"></a>Command Groups: build, run, test, debug</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/27">Command group (application lifecycle)</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_applying_command"><a class="anchor" href="#_applying_command"></a>Applying command</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/56">New type of command to <code>apply</code> a component</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_environment_variables_for_a_specific_command"><a class="anchor" href="#_environment_variables_for_a_specific_command"></a>Environment variables for a specific command</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/21">Environment variables for a specific command</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_renaming_workdir_into_workingdir"><a class="anchor" href="#_renaming_workdir_into_workingdir"></a>Renaming <code>workdir</code> into <code>workingDir</code></h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/22">Renaming workdir into workingDir</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_id_and_label_for_composite_commands"><a class="anchor" href="#_id_and_label_for_composite_commands"></a><code>Id</code> and <code>label</code> for composite commands</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/18">Composite commands label and id</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_run_exec_commands_as_specific_user"><a class="anchor" href="#_run_exec_commands_as_specific_user"></a>Run exec Commands as Specific User</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/34">Run exec commands as specified user</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_devfile_metadata_add_a_link_to_an_external_website"><a class="anchor" href="#_devfile_metadata_add_a_link_to_an_external_website"></a>Devfile metadata: add a link to an external website</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/38">Devfile metadata: add a link to an external website</a>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_stackdevfile_matching_rules"><a class="anchor" href="#_stackdevfile_matching_rules"></a>Stack/Devfile Matching Rules</h3>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/40">Stacks/Devfile matching rules</a>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_using_parent_devfiles_to_build_reusable_stacks"><a class="anchor" href="#_using_parent_devfiles_to_build_reusable_stacks"></a>Using parent devfiles to build reusable stacks</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>One of the major changes in the 2.0.0 specification is the addition of the concept of parent. That allows referring a devfile (the parent) from a distinct devfile and makes it possible to reuse in multiple devfiles the same parent (the stack).</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml"># v2.0
----
-schemaVersion: 2.0.0
-metadata:
-  name: nodejs-app
-parent:
-    uri: https://(...)/nodejs/devfile.yaml # &lt;--- Parent referenced by `uri`, registry `id`
-                                           #      or `kubernetes` devworkspace
-  components:                              # &lt;--- Parent configuration can be customized
-    - container:
-         name: vsx-installer
-         env:
-            - name: VSX_LIST
-               value: java-dbg.vsix,java.vsix
-components:                               # &lt;--- components are added to parent's components
-  - container:
-      name: tooling                       # &lt;--- should not match the name of a parent component
-      image: busybox
-commands:                                 # &lt;--- commands are added to parent's commands
-   (...)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Details are in the <a href="https://github.com/devfile/api/issues/25">Parent Devfiles</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_adding_event_bindings"><a class="anchor" href="#_adding_event_bindings"></a>Adding event bindings</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There is a new root element in the devfile 2.0: events:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml"># v2.0
----
-components:
-  - container:
-      name: "copier"
-      image: ''
-  - container:
-      name: "maven"
-      image: ''
-  - plugin:
-      id: theia
-Commands:
-containerBuild:
-reference:
-composite:
 
-  - exec:
-      name: "copyNeededFiles"
-      component: "copier"
-      commandLine: "cp somefile"
-  - exec:
-      name: "buildAll"
-      component: "maven"
-      commandLine: "mvn ..."
-  - vsCodeTask:
-      name: "openFile"
-      component: "theia"
-events:
-  preStart:
-    - "copyNeededFiles"
-  postStart:
-    - "buildAll"
-    - "openFile"</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Details are in the <a href="https://github.com/devfile/api/issues/32">Add lifecycle bindings to bind commands to specific events</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_new_metadata"><a class="anchor" href="#_new_metadata"></a>New metadata</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Version 2 of the devfile adds new metadata, including <code>version</code> (see <a href="https://github.com/devfile/api/issues/10">The devfile schema/samples should have version and name</a>) and some mandatory metadata for plug-ins (see <a href="https://github.com/devfile/api/issues/31">Better plugin mechanism</a>).</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_the_exec_command_requires_a_defined_component"><a class="anchor" href="#_the_exec_command_requires_a_defined_component"></a>The <code>exec</code> command requires a defined component</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><code>exec</code> now must have a component explicitly defined.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v1.0
----
-  - name: helloWorld
-      exec:
-        env:
-          - name: "USER"
-            value: "John Doe"
-        commandLine: 'echo "Hello ${USER}"'
-        component: build-tools</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v2.0
----
-  - id: helloWorld
-    exec:
-      component: "mycomponent"
-      env:
-        - name: "USER"
-          value: "John Doe"
-      commandLine: 'echo "Hello ${USER}"'
-      component: build-tools</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/152">Exec command should make component required</a></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_support_of_multiple_remotes_for_a_git_project"><a class="anchor" href="#_support_of_multiple_remotes_for_a_git_project"></a>Support of multiple remotes for a Git project</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Devfile v2 supports multiple remotes for a Git project.</p>
-</div>
-<div class="listingblock">
-<div class="title">Example of a project with multiple remotes defined</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">projects:
-  - name: project
-    git:
-      remotes:
-        origin: "https://github.com/amisevsk/web-nodejs-sample.git"
-        upstream: "https://github.com/che-samples/web-nodejs-sample.git"
-        gh-collaborator: "https://github.com/gh-collaborator/web-nodejs-sample.git"
-      checkoutFrom: <i class="conum" data-value="1"></i><b>(1)</b>
-        revision: foo <i class="conum" data-value="2"></i><b>(2)</b>
-        remote: upstream <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Mandatory if there is more than one remote.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The revision that should be used checked out. May be a branch name, tag, or commit id. Default branch should be checked out if missing.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The remote name that should be used as init. Required if there are more than one remote configured.</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/104">Support multiple remotes for projects to support forking workflow</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_name_and_id_moved_to_a_top_level"><a class="anchor" href="#_name_and_id_moved_to_a_top_level"></a><code>name</code> and <code>id</code> moved to a top-level</h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v1.0
----
-components:
-  - container:
-      name: tools</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">v2.0
----
-components:
-  - name: tools
-    container:</code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>More details are in the <a href="https://github.com/devfile/api/issues/102">corresponding issue</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_mountsources_are_true_by_default"><a class="anchor" href="#_mountsources_are_true_by_default"></a><code>mountSources</code> are true by default</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The <code>mountSources</code> field is defined as <code>true</code> for all non-plug-in components and components that do not set <code>dedicatedPod</code> to <code>true</code>.
-For more details, see <a href="https://github.com/devfile/api/issues/75">mountsources default value for containers</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_hotreloadcapable_added_to_exec_commands"><a class="anchor" href="#_hotreloadcapable_added_to_exec_commands"></a><code>hotReloadCapable</code> added to <code>exec</code> commands</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The <code>hotReloadCapable</code> fields defines whether the command is capable of reloading itself when source code changes. If set to <code>true</code>, the command is not restarted, and it is expected to handle file changes on its own.
-Default value is <code>false</code>.</p>
-</div>
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/64">configuration option to avoid unncessary restarts of process</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_commandgrouptype_has_been_renamed_to_commandgroupkind"><a class="anchor" href="#_commandgrouptype_has_been_renamed_to_commandgroupkind"></a><code>CommandGroupType</code> has been renamed to <code>CommandGroupKind</code></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>For more details, see <a href="https://github.com/devfile/api/issues/59">Rename command group type</a>.</p>
-</div>
-</div>
-</div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
